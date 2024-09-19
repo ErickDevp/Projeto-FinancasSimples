@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useAuthForm } from '../../hooks/useAuthForm';
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
-import '../../assets/styles/Redefinir.css';
 import Container from '../../components/layout/Container';
 
 export default function Redefinir() {

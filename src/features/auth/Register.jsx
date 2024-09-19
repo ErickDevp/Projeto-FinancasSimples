@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
-import '../../assets/styles/Register.css'
 import Container from '../../components/layout/Container';
 import AuthWithGoogle from '../../components/common/AuthWithGoogle.jsx';
 import { useAuthForm } from '../../hooks/useAuthForm.js';
@@ -20,17 +19,17 @@ export default function Register() {
         handleNameChange,
         handleEmailChange,
         handlePasswordChange,
-        handleSubmit,
         handleComfirmPasswordChange,
         isConfirmPasswordEmpty,
         isPasswordMatch,
-        isPasswordStrong
+        isPasswordStrong,
+        handleRegisterSubmit
       } = useAuthForm();
 
     return (
         <Container>
             <div className='container_segundary'>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleRegisterSubmit}>
                     <h1>Crie sua conta</h1>
                     <div className='inputs'>
                         <Input 
@@ -67,8 +66,8 @@ export default function Register() {
                             onChange={handlePasswordChange}
                         />
                         {!isPasswordEmpty ? <span className='erro'>Campo obrigatório!</span> : 
-                         !isPasswordValid ? <span className='erro'>senha muito curta!</span> : 
-                         !isPasswordStrong && <span className='erro'>senha fraca!</span>}
+                         !isPasswordValid ? <span className='erro'>Senha muito curta!</span> : 
+                         !isPasswordStrong && <span className='erro'>Senha fraca!</span>}
                         <Input 
                             type='password'
                             placeholder='Repita a senha' 

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Container from '../../components/layout/Container';
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
-import '../../assets/styles/Login.css';
 import AuthWithGoogle from '../../components/common/AuthWithGoogle.jsx';
 
 export default function Login() {
@@ -14,13 +13,13 @@ export default function Login() {
         isPasswordEmpty,
         handleEmailChange,
         handlePasswordChange,
-        handleSubmit,
+        handleLoginSubmit,
       } = useAuthForm();
 
     return (
         <Container>
             <div className='container_segundary'>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleLoginSubmit}>
                     <h1>Entre com sua conta</h1>   
                     <div className='inputs'>
                         <Input 

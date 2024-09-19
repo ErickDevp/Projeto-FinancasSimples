@@ -4,26 +4,30 @@ import { isFieldEmpty, isValidEmail, isPasswordMatching, isPasswordLengthValid, 
 export function useAuthForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const [isNameEmpty, setIsNameEmpty ] = useState(true)
-  const [isLastNameEmpty, setIsLastNameEmpty ] = useState(true)
-
   const [isEmailEmpty, setIsEmailEmpty] = useState(true);
+  const [isLastNameEmpty, setIsLastNameEmpty ] = useState(true)
   const [isPasswordEmpty, setIsPasswordEmpty] = useState(true);
-
+  const [isConfirmPasswordEmpty, setIsConfirmPasswordEmpty] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
-
   const [isPasswordStrong, setIsPasswordStrong] = useState(true);
-
-  const [isConfirmPasswordEmpty, setIsConfirmPasswordEmpty] = useState(true);
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
 
-  const handleSubmit = (e) => {
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+
+    
+
+    setIsEmailEmpty(isFieldEmpty(email));
+    setIsPasswordEmpty(isFieldEmpty(password));
+  };
+
+  const handleRegisterSubmit = (e) => {
     e.preventDefault();
 
     console.log('email:', email);
@@ -65,7 +69,6 @@ export function useAuthForm() {
     setIsPasswordEmpty(isFieldEmpty(newPassword));
     setIsPasswordValid(isPasswordLengthValid(newPassword));
     setIsPasswordStrong(strengthenPassword(newPassword));
-
   };
 
   const handleComfirmPasswordChange = (e) => {
@@ -91,7 +94,8 @@ export function useAuthForm() {
     handleNameChange,
     handleEmailChange,
     handlePasswordChange,
-    handleSubmit,
+    handleRegisterSubmit,
+    handleLoginSubmit,
 
     isConfirmPasswordEmpty,
     isPasswordMatch,
