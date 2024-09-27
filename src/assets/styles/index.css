@@ -25,7 +25,7 @@ html, body, #root {
   max-width: 600px;
   border-radius: 10px;
   background-color: white;
-  padding: 60px 20px;
+  padding: 40px 20px;
 }
 
 .container_segundary form {
@@ -48,4 +48,12 @@ html, body, #root {
   text-decoration: none;
   font-weight: bold;
   color: var(--color-primary);
+}
+
+.logo_dolar {
+  margin: 0 auto 10px;
+}
+
+.logo_dolar img {
+  width: 45px;
 }

@@ -4,6 +4,7 @@ import { useAuthForm } from '../../hooks/useAuthForm';
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 import Container from '../../components/layout/Container';
+import LogoDolar from '../../components/common/LogoDolar';
 
 export default function Redefinir() {
     const {
@@ -16,6 +17,7 @@ export default function Redefinir() {
         <Container padding='90px'>
             <div className='container_segundary'>
                 <form>
+                    <LogoDolar/>
                     <h1>Redefinir senha</h1>
                     <div className='inputs' style={{marginBottom: '25px'}}>
                         <Input 

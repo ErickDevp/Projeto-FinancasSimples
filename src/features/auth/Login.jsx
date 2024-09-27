@@ -5,6 +5,7 @@ import Container from '../../components/layout/Container';
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 import AuthWithGoogle from '../../components/common/AuthWithGoogle.jsx';
+import LogoDolar from '../../components/common/LogoDolar.jsx';
 
 export default function Login() {
     const {
@@ -20,6 +21,7 @@ export default function Login() {
         <Container>
             <div className='container_segundary'>
                 <form onSubmit={handleLoginSubmit}>
+                    <LogoDolar/>
                     <h1>Entre com sua conta</h1>   
                     <div className='inputs'>
                         <Input 

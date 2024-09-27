@@ -6,6 +6,7 @@ import Input from "../../components/common/Input";
 import Container from '../../components/layout/Container';
 import AuthWithGoogle from '../../components/common/AuthWithGoogle.jsx';
 import { useAuthForm } from '../../hooks/useAuthForm.js';
+import LogoDolar from '../../components/common/LogoDolar.jsx';
 
 export default function Register() {
     const {
@@ -30,6 +31,7 @@ export default function Register() {
         <Container>
             <div className='container_segundary'>
                 <form onSubmit={handleRegisterSubmit}>
+                    <LogoDolar/>
                     <h1>Crie sua conta</h1>
                     <div className='inputs'>
                         <Input 
