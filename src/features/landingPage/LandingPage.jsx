@@ -4,6 +4,7 @@ import FeedbackSection from "./FeedbackSection.jsx"
 import HeroSection from './HeroSection.jsx'
 import FeaturesSection from './FeaturesSection.jsx'
 import ContactFormSection from "./ContactFormSection.jsx"
+import Footer from "../../components/layout/Footer.jsx"
 
 export default function LandingPage() {
     return (
@@ -14,6 +15,7 @@ export default function LandingPage() {
             <FeedbackSection/>
             <FeaturesSection/>
             <ContactFormSection/>
+            <Footer/>
         </>
         
     )
