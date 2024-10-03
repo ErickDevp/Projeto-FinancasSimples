@@ -38,6 +38,7 @@ export default function Redefinir() {
 
         try {
             await sendPasswordResetEmail(firebaseAuth, email);
+            setShowLoading(false);
         } catch (error) {
             setShowLoading(false);
             if(!showError) {
