@@ -7,7 +7,7 @@ import Container from '../../components/layout/Container';
 import AuthWithGoogle from '../../components/common/AuthWithGoogle.jsx';
 import { useAuthForm } from '../../hooks/useAuthForm.js';
 import LogoDolar from '../../components/common/LogoDolar.jsx';
-import { isFieldEmpty } from '../../utils/validation';
+import { isFieldEmpty, isFormRegisterValid } from '../../utils/validation';
 import {firebaseAuth} from '../../services/firebase.js'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
@@ -65,30 +65,33 @@ export default function Register() {
 
       const handleRegisterSubmit = async (e) => {
         e.preventDefault();
-        setShowLoading(true);
-  
-        try {
-            const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-            const user = userCredential.user;
+        
+        if(isFormRegisterValid(email, password, firstName, lastName, confirmPassword)) {
+            setShowLoading(true);
 
-            await setDoc(doc(firestore, 'users', user.uid), {
-                firstName,
-                lastName,
-                email,
-            });
-
-            navigate('/home')
-
-        } catch (error) {
-            setShowLoading(false);
-
-            if(!showError) {
-                if (error.code === 'auth/email-already-in-use') {
-                    triggerError();
-                    setMsgError('Este email já está associado a outra conta.');
-                } else {
-                    triggerError();
-                    setMsgError('Erro ao registrar. Tente novamente.');
+            try {
+                const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+                const user = userCredential.user;
+    
+                await setDoc(doc(firestore, 'users', user.uid), {
+                    firstName,
+                    lastName,
+                    email,
+                });
+    
+                navigate('/home')
+    
+            } catch (error) {
+                setShowLoading(false);
+    
+                if(!showError) {
+                    if (error.code === 'auth/email-already-in-use') {
+                        triggerError();
+                        setMsgError('Este email já está associado a outra conta.');
+                    } else {
+                        triggerError();
+                        setMsgError('Erro ao registrar. Tente novamente.');
+                    }
                 }
             }
         }

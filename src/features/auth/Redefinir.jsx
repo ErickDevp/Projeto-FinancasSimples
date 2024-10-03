@@ -8,7 +8,7 @@ import LogoDolar from '../../components/common/LogoDolar';
 import ErrorModal from '../../components/common/ErrorModal.jsx';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { useState } from 'react';
-import { isFieldEmpty } from '../../utils/validation';
+import { isFieldEmpty, isFormRedefinirValid } from '../../utils/validation';
 import {firebaseAuth} from '../../services/firebase.js'
 import LoadingSpinner from '../../components/common/LoadingSpinner.jsx';
 
@@ -34,18 +34,21 @@ export default function Redefinir() {
 
     const handlePasswordReset = async (e) => {
         e.preventDefault();
-        setShowLoading(true);
 
-        try {
-            await sendPasswordResetEmail(firebaseAuth, email);
-            setShowLoading(false);
-        } catch (error) {
-            setShowLoading(false);
-            if(!showError) {
-                triggerError();
+        if(isFormRedefinirValid(email)) {
+            setShowLoading(true);
+
+            try {
+                await sendPasswordResetEmail(firebaseAuth, email);
+                setShowLoading(false);
+            } catch (error) {
+                setShowLoading(false);
+                if(!showError) {
+                    triggerError();
+                }
             }
         }
-
+        
         setIsEmailEmpty(isFieldEmpty(email));
     };
 

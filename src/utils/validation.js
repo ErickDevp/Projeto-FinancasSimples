@@ -20,3 +20,17 @@ export const strengthenPassword = (password) => {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     return passwordRegex.test(password);
 };
+
+export const isFormRegisterValid = (email, password, firstName, lastName, confirmPassword) => {
+    return isFieldEmpty(email) && isValidEmail(email) && 
+           isFieldEmpty(password) && isFieldEmpty(firstName) &&
+           isFieldEmpty(lastName) && isFieldEmpty(confirmPassword) && isPasswordLengthValid(password) && isPasswordMatching(password, confirmPassword);
+}
+
+export const isFormLoginValid = (email, password) => {
+    return isFieldEmpty(email) && isValidEmail(email) && isFieldEmpty(password);
+}
+
+export const isFormRedefinirValid = (email) => {
+    return isFieldEmpty(email) && isValidEmail(email);
+}

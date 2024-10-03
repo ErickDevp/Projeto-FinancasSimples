@@ -8,7 +8,7 @@ import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 import AuthWithGoogle from '../../components/common/AuthWithGoogle.jsx';
 import LogoDolar from '../../components/common/LogoDolar.jsx';
-import { isFieldEmpty } from '../../utils/validation';
+import { isFieldEmpty, isFormLoginValid } from '../../utils/validation';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {firebaseAuth} from '../../services/firebase.js'
 import ErrorModal from '../../components/common/ErrorModal.jsx';
@@ -44,15 +44,18 @@ export default function Login() {
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        setShowLoading(true);
         
-        try {
-            await signInWithEmailAndPassword(firebaseAuth, email, password);
-            navigate('/home');
-        } catch(error) {
-            setShowLoading(false);
-            if(!showError) {
-                triggerError();
+        if(isFormLoginValid(email, password)) {
+            setShowLoading(true);
+            
+            try {
+                await signInWithEmailAndPassword(firebaseAuth, email, password);
+                navigate('/home');
+            } catch(error) {
+                setShowLoading(false);
+                if(!showError) {
+                    triggerError();
+                }
             }
         }
 
