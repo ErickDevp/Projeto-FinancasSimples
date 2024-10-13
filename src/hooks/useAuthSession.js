@@ -6,17 +6,6 @@ export default function useAuthSession() {
   const [user, setUser] = useState(null);
   const [showLoading, setShowLoading] = useState(true);
 
- /*
-  function getLoggerUser() {
-    return new Promise(resolve => {
-        onAuthStateChanged(firebaseAuth, (user) => {
-            console.log(user);
-            resolve(user)
-        });
-    })
-  }
- */
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
       if (user) {
