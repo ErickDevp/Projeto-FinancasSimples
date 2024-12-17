@@ -1,4 +1,4 @@
-import Sidebar from "../components/common/SideBar";
+import Sidebar from "../components/common/Sidebar";
 
 export default function FiisPage() {
     return (
