@@ -1,6 +1,6 @@
 import { FaPlus, FaSearch, FaRegTrashAlt    } from 'react-icons/fa';
 import InvestmentBalanceBox from "../components/common/InvestmentBalanceBox";
-import Sidebar from "../components/common/SideBar";
+import Sidebar from "../components/common/Sidebar";
 import "../assets/styles/HomePage.css";
 import ModalNewTransaction from '../components/common/ModalNewTransaction';
 import React, { useState } from 'react';
